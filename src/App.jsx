@@ -100,7 +100,7 @@ const App = () => {
         }
 
       } catch (error) {
-        console.error('No se pudo sincronizar Google Sheets:', error);
+        console.error('No se pudo cargar el contenido:', error);
       }
     };
 
@@ -226,7 +226,7 @@ const App = () => {
             <div className="rounded-r-xl border-l-4 border-slate-300 bg-slate-50 p-6 shadow-sm md:col-span-2">
               <span className="text-xs font-black uppercase tracking-wider text-slate-500">Avisos</span>
               <h4 className="mt-1 text-lg font-bold text-gray-900">No hay avisos destacados publicados</h4>
-              <p className="mt-2 text-sm text-gray-600">Cuando se publiquen noticias destacadas en la hoja de Google Sheets apareceran aqui automaticamente.</p>
+              <p className="mt-2 text-sm text-gray-600">Los avisos destacados apareceran aqui cuando exista informacion oficial vigente para publicar.</p>
             </div>
           )}
         </div>
@@ -582,10 +582,10 @@ const App = () => {
   };
 
   const SeguridadContactoView = () => (
-    <div className="animate-in zoom-in mx-auto max-w-5xl space-y-16 px-4 duration-500">
+    <div className="animate-in zoom-in mx-auto max-w-5xl space-y-10 px-4 duration-500 md:space-y-16">
       <SectionHeader title="Seguridad y Contacto" subtitle="Red de emergencia y canales oficiales de comunicacion con la directiva." icon={ShieldAlert} />
 
-      <div className="grid gap-12 lg:grid-cols-2">
+      <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
         <div>
           <h3 className="mb-6 border-b border-red-100 pb-2 text-2xl font-black text-red-600">Numeros de Utilidad Publica</h3>
           <div className="space-y-4">
@@ -597,12 +597,12 @@ const App = () => {
               { name: 'Bomberos Colina', tel: '(22) 844 1573', color: '#b91c1c' },
               { name: 'Ambulancia SUA Colina', tel: '(22) 844 5026', color: '#ea580c' },
             ].map((item, idx) => (
-              <div key={idx} className="flex items-center justify-between rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:border-gray-300">
-                <div>
-                  <h4 className="text-xs font-black uppercase tracking-widest text-gray-400">{item.name}</h4>
-                  <p className="text-2xl font-black" style={{ color: item.color }}>{item.tel}</p>
+              <div key={idx} className="flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:border-gray-300 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
+                  <h4 className="text-xs font-black uppercase tracking-widest leading-snug text-gray-400">{item.name}</h4>
+                  <p className="text-xl font-black sm:text-2xl" style={{ color: item.color }}>{item.tel}</p>
                 </div>
-                <a href={`tel:${item.tel.replace(/[()\s]+/g, '')}`} className="rounded-xl p-3 text-white shadow-md transition hover:scale-105" style={{ backgroundColor: item.color }}>
+                <a href={`tel:${item.tel.replace(/[()\s]+/g, '')}`} className="inline-flex w-fit items-center justify-center self-start rounded-xl p-3 text-white shadow-md transition hover:scale-105 sm:self-auto" style={{ backgroundColor: item.color }}>
                   <Phone size={24} />
                 </a>
               </div>
@@ -616,12 +616,12 @@ const App = () => {
             <p className="mb-4 text-sm font-medium leading-relaxed text-amber-900">
               Para denuncias y seguimiento digital del sector, la Municipalidad de Colina tambien dispone de la app SOSAFE y un video explicativo de uso.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div className="grid gap-3 sm:grid-cols-3">
               <a
                 href="https://play.google.com/store/apps/details?id=cl.sosafe.panicbuttonandroid.app&hl=es_CL&gl=US"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center rounded-lg bg-emerald-100 px-4 py-2 font-bold text-emerald-800 transition hover:bg-emerald-200"
+                className="flex items-center justify-center rounded-lg bg-emerald-100 px-4 py-3 text-center font-bold text-emerald-800 transition hover:bg-emerald-200"
               >
                 Android
               </a>
@@ -629,7 +629,7 @@ const App = () => {
                 href="https://apps.apple.com/cl/app/sosafe-city-social-network/id854686449"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center rounded-lg bg-slate-100 px-4 py-2 font-bold text-slate-800 transition hover:bg-slate-200"
+                className="flex items-center justify-center rounded-lg bg-slate-100 px-4 py-3 text-center font-bold text-slate-800 transition hover:bg-slate-200"
               >
                 iPhone
               </a>
@@ -637,7 +637,7 @@ const App = () => {
                 href="https://www.youtube.com/watch?v=MaTRJx3KSt4"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center rounded-lg bg-red-100 px-4 py-2 font-bold text-red-800 transition hover:bg-red-200"
+                className="flex items-center justify-center rounded-lg bg-red-100 px-4 py-3 text-center font-bold text-red-800 transition hover:bg-red-200"
               >
                 <ExternalLink className="mr-2" size={16} /> Video app
               </a>
@@ -660,27 +660,30 @@ const App = () => {
 
         <div>
           <h3 className="mb-6 border-b pb-2 text-2xl font-black" style={{ color: colors.primary }}>Informacion de Contacto</h3>
-          <div className="rounded-2xl border-t-4 bg-white p-8 shadow-lg" style={{ borderColor: colors.primary }}>
+          <div className="rounded-2xl border-t-4 bg-white p-6 shadow-lg md:p-8" style={{ borderColor: colors.primary }}>
             <div className="space-y-6">
               <div>
                 <span className="mb-1 block text-xs font-black uppercase tracking-widest text-gray-400">Correo Oficial (Directiva)</span>
-                <a href="mailto:barrioestanciaportezuelo@gmail.com" className="flex items-center text-lg font-bold text-blue-600 hover:underline">
-                  <Mail className="mr-3" size={24} /> barrioestanciaportezuelo@gmail.com
+                <a href="mailto:barrioestanciaportezuelo@gmail.com" className="flex flex-col gap-2 text-base font-bold text-blue-600 hover:underline sm:flex-row sm:items-center sm:text-lg">
+                  <span className="flex items-center">
+                    <Mail className="mr-3" size={24} />
+                  </span>
+                  <span className="break-all">barrioestanciaportezuelo@gmail.com</span>
                 </a>
               </div>
 
               <div>
                 <span className="mb-2 block text-xs font-black uppercase tracking-widest text-gray-400">Redes Sociales Oficiales</span>
-                <div className="flex space-x-4">
+                <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                   <a
                     href="https://www.facebook.com/profile.php?id=61581173977939"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center rounded-lg bg-blue-50 px-4 py-2 font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white"
+                    className="flex items-center justify-center rounded-lg bg-blue-50 px-4 py-3 font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white"
                   >
                     <Facebook className="mr-2" size={20} /> Facebook
                   </a>
-                  <a href="https://www.instagram.com/barrioestanciaportezuelo/" target="_blank" rel="noreferrer" className="flex items-center rounded-lg bg-pink-50 px-4 py-2 font-bold text-pink-700 transition hover:bg-pink-600 hover:text-white">
+                  <a href="https://www.instagram.com/barrioestanciaportezuelo/" target="_blank" rel="noreferrer" className="flex items-center justify-center rounded-lg bg-pink-50 px-4 py-3 font-bold text-pink-700 transition hover:bg-pink-600 hover:text-white">
                     <Instagram className="mr-2" size={20} /> Instagram
                   </a>
                 </div>
