@@ -168,14 +168,14 @@ const App = () => {
           <div className="relative z-20 max-w-4xl px-8 py-16 md:px-16">
             <div className="mb-8 inline-flex items-center space-x-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-md">
               <Landmark size={16} className="text-blue-200" />
-              <span className="text-xs font-bold uppercase tracking-widest text-blue-100">Ley N. 19.418</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-white">Ley N. 19.418</span>
             </div>
             <h1 className="mb-6 text-5xl font-black leading-tight text-white md:text-7xl">
               Portal Oficial
               <br />
               <span className="bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent">Barrio Portezuelo</span>
             </h1>
-            <p className="mb-10 max-w-2xl text-xl font-medium leading-relaxed text-blue-100">
+            <p className="mb-10 max-w-2xl text-xl font-medium leading-relaxed text-white/90">
               Organizacion comunitaria territorial que representa a los vecinos de Estancia Liray.
               Tu espacio para informacion oficial, tramites y participacion.
             </p>
@@ -204,7 +204,7 @@ const App = () => {
 
       <section className="mx-auto max-w-7xl px-4">
         <div className="mb-8 flex items-center justify-between">
-          <h3 className="text-2xl font-black" style={{ color: colors.primary }}>Avisos Destacados</h3>
+          <h2 className="text-2xl font-black" style={{ color: colors.primary }}>Avisos Destacados</h2>
           <button onClick={() => setActiveTab('noticias')} className="flex items-center text-sm font-bold text-[#436aa5] hover:underline" type="button">
             Ver todo <ChevronRight size={16} />
           </button>
@@ -217,15 +217,15 @@ const App = () => {
               return (
                 <div key={item.id} className={`rounded-r-xl border-l-4 p-6 shadow-sm ${tone.container}`}>
                   <span className={`text-xs font-black uppercase tracking-wider ${tone.tag}`}>{item.category}</span>
-                  <h4 className="mt-1 text-lg font-bold text-gray-900">{item.title}</h4>
+                  <h3 className="mt-1 text-lg font-bold text-gray-900">{item.title}</h3>
                   <p className="mt-2 text-sm text-gray-600">{item.summary}</p>
                 </div>
               );
             })
           ) : (
             <div className="rounded-r-xl border-l-4 border-slate-300 bg-slate-50 p-6 shadow-sm md:col-span-2">
-              <span className="text-xs font-black uppercase tracking-wider text-slate-500">Avisos</span>
-              <h4 className="mt-1 text-lg font-bold text-gray-900">No hay avisos destacados publicados</h4>
+              <span className="text-xs font-black uppercase tracking-wider text-slate-700">Avisos</span>
+              <h3 className="mt-1 text-lg font-bold text-gray-900">No hay avisos destacados publicados</h3>
               <p className="mt-2 text-sm text-gray-600">Los avisos destacados apareceran aqui cuando exista informacion oficial vigente para publicar.</p>
             </div>
           )}
@@ -287,7 +287,7 @@ const App = () => {
             <BookOpen size={28} style={{ color: colors.secondary }} />
             <h3 className="text-2xl font-black" style={{ color: colors.primary }}>Transparencia y Documentos</h3>
           </div>
-          <p className="mb-8 font-medium text-gray-500">Descarga los documentos oficiales y actas publicas de nuestra organizacion comunitaria.</p>
+          <p className="mb-8 font-medium text-gray-600">Descarga los documentos oficiales y actas publicas de nuestra organizacion comunitaria.</p>
 
           <div className="space-y-3">
             {[
@@ -299,9 +299,13 @@ const App = () => {
               <div key={i} className="group flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50 p-4 transition hover:bg-blue-50">
                 <div>
                   <h4 className="font-bold text-gray-800 transition group-hover:text-[#203c66]">{doc.name}</h4>
-                  <p className="mt-1 text-xs text-gray-500">{doc.date} | {doc.size}</p>
+                  <p className="mt-1 text-xs text-gray-600">{doc.date} | {doc.size}</p>
                 </div>
-                <button className="rounded-lg bg-white p-2 text-[#436aa5] shadow-sm transition group-hover:bg-[#436aa5] group-hover:text-white" type="button">
+                <button
+                  className="rounded-lg bg-white p-2 text-[#436aa5] shadow-sm transition group-hover:bg-[#436aa5] group-hover:text-white"
+                  type="button"
+                  aria-label={`Descargar ${doc.name}`}
+                >
                   <FileDown size={20} />
                 </button>
               </div>
@@ -387,26 +391,26 @@ const App = () => {
       <div className="mb-8 flex flex-col items-center rounded-2xl border-l-8 border-red-500 bg-red-50 p-6 shadow-sm sm:flex-row sm:space-x-4">
         <AlertTriangle size={32} className="mb-2 shrink-0 text-red-500 sm:mb-0" />
         <div>
-          <h4 className="text-sm font-black uppercase tracking-widest text-red-900">Aviso de Utilidad Publica</h4>
-          <p className="font-medium text-red-800">Este formulario <strong>NO es para emergencias en curso</strong>. Los delitos flagrantes, incendios o emergencias medicas deben informarse directamente a los canales oficiales (133, 14XX, 132, 131).</p>
+          <h3 className="text-sm font-black uppercase tracking-widest text-red-900">Aviso de Utilidad Publica</h3>
+          <p className="font-medium text-red-900">Este formulario <strong>NO es para emergencias en curso</strong>. Los delitos flagrantes, incendios o emergencias medicas deben informarse directamente a los canales oficiales (133, 1468, 132 y 131).</p>
         </div>
       </div>
 
       <div className="mb-10 grid gap-6 md:grid-cols-3">
         <div className="rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm">
           <ShieldAlert size={32} className="mx-auto mb-3 text-[#436aa5]" />
-          <h4 className="mb-2 font-black text-gray-900">Denuncias</h4>
-          <p className="text-xs font-medium text-gray-500">Seguridad comunitaria, focos de basura, luminarias apagadas, mascotas sueltas.</p>
+          <h3 className="mb-2 font-black text-gray-900">Denuncias</h3>
+          <p className="text-xs font-medium text-gray-600">Seguridad comunitaria, focos de basura, luminarias apagadas, mascotas sueltas.</p>
         </div>
         <div className="rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm">
           <MessageSquare size={32} className="mx-auto mb-3 text-amber-500" />
-          <h4 className="mb-2 font-black text-gray-900">Sugerencias</h4>
-          <p className="text-xs font-medium text-gray-500">Mejoras en infraestructura, ideas para plazas, propuestas de talleres.</p>
+          <h3 className="mb-2 font-black text-gray-900">Sugerencias</h3>
+          <p className="text-xs font-medium text-gray-600">Mejoras en infraestructura, ideas para plazas, propuestas de talleres.</p>
         </div>
         <div className="rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm">
           <Users size={32} className="mx-auto mb-3 text-red-400" />
-          <h4 className="mb-2 font-black text-gray-900">Quejas</h4>
-          <p className="text-xs font-medium text-gray-500">Ruidos molestos recurrentes, problemas de convivencia, estacionamientos irregulares.</p>
+          <h3 className="mb-2 font-black text-gray-900">Quejas</h3>
+          <p className="text-xs font-medium text-gray-600">Ruidos molestos recurrentes, problemas de convivencia, estacionamientos irregulares.</p>
         </div>
       </div>
 
@@ -445,14 +449,14 @@ const App = () => {
               >
                 <div className="mb-2 flex items-start justify-between">
                   <span className="rounded bg-blue-100 px-2 py-1 text-xs font-black uppercase tracking-wider text-blue-700">{item.category}</span>
-                  <span className="text-xs font-bold text-gray-400">{item.dateLabel}</span>
+                  <span className="text-xs font-bold text-gray-600">{item.dateLabel}</span>
                 </div>
                 <h4 className="mt-2 mb-2 text-xl font-black text-gray-900">{item.title}</h4>
                 <p className="font-medium leading-relaxed text-gray-600">{item.summary}</p>
               </button>
             ))
           ) : (
-            <div className="rounded-2xl border border-dashed border-gray-200 bg-white p-6 text-gray-500 shadow-sm">
+            <div className="rounded-2xl border border-dashed border-gray-200 bg-white p-6 text-gray-600 shadow-sm">
               No hay noticias publicadas por el momento.
             </div>
           )}
@@ -466,17 +470,17 @@ const App = () => {
                 agendaItems.slice(0, 3).map((item) => (
                   <div key={item.id} className="flex gap-4">
                     <div className="flex min-w-[60px] flex-col items-center rounded-xl bg-white/10 p-2">
-                      <span className="text-[10px] font-black uppercase text-blue-200">{item.month}</span>
+                      <span className="text-[10px] font-black uppercase text-blue-100">{item.month}</span>
                       <span className="text-2xl font-black">{item.day}</span>
                     </div>
                     <div>
                       <h4 className="text-lg font-bold">{item.title}</h4>
-                      <p className="text-sm text-blue-200">{item.details}</p>
+                      <p className="text-sm text-blue-100">{item.details}</p>
                     </div>
                   </div>
                 ))
               ) : (
-                <div className="rounded-xl border border-white/15 bg-white/5 p-4 text-sm text-blue-100">
+                <div className="rounded-xl border border-white/15 bg-white/5 p-4 text-sm text-white/85">
                   No hay actividades publicadas por el momento.
                 </div>
               )}
@@ -536,9 +540,9 @@ const App = () => {
                 <span className="rounded bg-blue-100 px-2 py-1 text-xs font-black uppercase tracking-wider text-blue-700">
                   {selectedNewsItem.category}
                 </span>
-                <span className="text-sm font-bold text-gray-400">{selectedNewsItem.dateLabel}</span>
+                <span className="text-sm font-bold text-gray-600">{selectedNewsItem.dateLabel}</span>
                 {selectedNewsItem.author ? (
-                  <span className="text-sm font-medium text-gray-500">Por {selectedNewsItem.author}</span>
+                  <span className="text-sm font-medium text-gray-700">Por {selectedNewsItem.author}</span>
                 ) : null}
               </div>
 
@@ -599,10 +603,15 @@ const App = () => {
             ].map((item, idx) => (
               <div key={idx} className="flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:border-gray-300 sm:flex-row sm:items-center sm:justify-between">
                 <div className="min-w-0">
-                  <h4 className="text-xs font-black uppercase tracking-widest leading-snug text-gray-400">{item.name}</h4>
+                  <h4 className="text-xs font-black uppercase tracking-widest leading-snug text-gray-600">{item.name}</h4>
                   <p className="text-xl font-black sm:text-2xl" style={{ color: item.color }}>{item.tel}</p>
                 </div>
-                <a href={`tel:${item.tel.replace(/[()\s]+/g, '')}`} className="inline-flex w-fit items-center justify-center self-start rounded-xl p-3 text-white shadow-md transition hover:scale-105 sm:self-auto" style={{ backgroundColor: item.color }}>
+                <a
+                  href={`tel:${item.tel.replace(/[()\s]+/g, '')}`}
+                  className="inline-flex w-fit items-center justify-center self-start rounded-xl p-3 text-white shadow-md transition hover:scale-105 sm:self-auto"
+                  style={{ backgroundColor: item.color }}
+                  aria-label={`Llamar a ${item.name}: ${item.tel}`}
+                >
                   <Phone size={24} />
                 </a>
               </div>
@@ -644,7 +653,7 @@ const App = () => {
             </div>
           </div>
 
-          <p className="mt-4 text-xs leading-relaxed text-gray-500">
+          <p className="mt-4 text-xs leading-relaxed text-gray-600">
             Fuente oficial: Municipalidad de Colina, seccion de seguridad publica.
             {' '}
             <a
@@ -663,7 +672,7 @@ const App = () => {
           <div className="rounded-2xl border-t-4 bg-white p-6 shadow-lg md:p-8" style={{ borderColor: colors.primary }}>
             <div className="space-y-6">
               <div>
-                <span className="mb-1 block text-xs font-black uppercase tracking-widest text-gray-400">Correo Oficial (Directiva)</span>
+                <span className="mb-1 block text-xs font-black uppercase tracking-widest text-gray-600">Correo Oficial (Directiva)</span>
                 <a href="mailto:barrioestanciaportezuelo@gmail.com" className="flex flex-col gap-2 text-base font-bold text-blue-600 hover:underline sm:flex-row sm:items-center sm:text-lg">
                   <span className="flex items-center">
                     <Mail className="mr-3" size={24} />
@@ -673,7 +682,7 @@ const App = () => {
               </div>
 
               <div>
-                <span className="mb-2 block text-xs font-black uppercase tracking-widest text-gray-400">Redes Sociales Oficiales</span>
+                <span className="mb-2 block text-xs font-black uppercase tracking-widest text-gray-600">Redes Sociales Oficiales</span>
                 <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                   <a
                     href="https://www.facebook.com/profile.php?id=61581173977939"
@@ -706,7 +715,7 @@ const App = () => {
       <nav className="sticky top-0 z-[100] border-b bg-white shadow-sm">
         <div className="mx-auto max-w-7xl px-4">
           <div className="flex h-20 items-center justify-between">
-            <button className="group flex items-center space-x-3" onClick={() => setActiveTab('inicio')} type="button">
+            <button className="group flex items-center space-x-3" onClick={() => setActiveTab('inicio')} type="button" aria-label="Ir al inicio">
               <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-lg border border-gray-100 bg-white p-1.5 shadow-sm">
                 <img
                   src={barrioLogo}
@@ -720,7 +729,7 @@ const App = () => {
                 <span data-logo-fallback className="hidden text-xl font-black text-[#203c66]">JP</span>
               </div>
               <div>
-                <h1 className="text-lg font-black uppercase leading-none tracking-tight" style={{ color: colors.primary }}>Junta de Vecinos</h1>
+                <div className="text-lg font-black uppercase leading-none tracking-tight" style={{ color: colors.primary }}>Junta de Vecinos</div>
                 <p className="mt-0.5 text-[10px] font-bold uppercase tracking-wider text-[#436aa5]">Estancia Liray Portezuelo</p>
               </div>
             </button>
@@ -740,14 +749,21 @@ const App = () => {
               ))}
             </div>
 
-            <button className="rounded-lg bg-gray-50 p-2 text-gray-600 lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)} type="button">
+            <button
+              className="rounded-lg bg-gray-50 p-2 text-gray-600 lg:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              type="button"
+              aria-label={isMenuOpen ? 'Cerrar menu de navegacion' : 'Abrir menu de navegacion'}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+            >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
         {isMenuOpen && (
-          <div className="absolute left-0 w-full border-t bg-white p-4 shadow-lg lg:hidden">
+          <div id="mobile-navigation" className="absolute left-0 w-full border-t bg-white p-4 shadow-lg lg:hidden">
             <div className="space-y-2">
               {validTabs.map((id) => (
                 <button key={id} onClick={() => setActiveTab(id)} className={`w-full rounded-xl px-4 py-3 text-left text-sm font-bold uppercase tracking-wide ${activeTab === id ? 'bg-[#203c66] text-white' : 'bg-gray-50 text-gray-600'}`} type="button">
@@ -780,8 +796,8 @@ const App = () => {
           </div>
 
           <div>
-            <h4 className="mb-4 text-xs font-black uppercase tracking-widest text-[#436aa5]">Navegacion Rapida</h4>
-            <ul className="space-y-2 text-sm font-bold text-gray-300">
+            <h3 className="mb-4 text-xs font-black uppercase tracking-widest text-blue-200">Navegacion Rapida</h3>
+            <ul className="space-y-2 text-sm font-bold text-gray-200">
               <li><button onClick={() => setActiveTab('nosotros')} className="hover:text-white" type="button">Transparencia</button></li>
               <li><button onClick={() => setActiveTab('certificados')} className="hover:text-white" type="button">Solicitar Certificado</button></li>
               <li><button onClick={() => setActiveTab('ventanilla')} className="hover:text-white" type="button">Canal de Denuncias</button></li>
@@ -789,19 +805,19 @@ const App = () => {
           </div>
 
           <div>
-            <h4 className="mb-4 text-xs font-black uppercase tracking-widest text-[#436aa5]">Contacto Oficial</h4>
-            <a href="mailto:barrioestanciaportezuelo@gmail.com" className="mb-4 flex items-center text-sm font-bold text-gray-300 hover:text-white">
+            <h3 className="mb-4 text-xs font-black uppercase tracking-widest text-blue-200">Contacto Oficial</h3>
+            <a href="mailto:barrioestanciaportezuelo@gmail.com" className="mb-4 flex items-center text-sm font-bold text-gray-200 hover:text-white">
               <Mail size={16} className="mr-2" /> Escribir a Directiva
             </a>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/profile.php?id=61581173977939" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white" aria-label="Facebook"><Facebook size={24} /></a>
-              <a href="https://www.instagram.com/barrioestanciaportezuelo/" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white" aria-label="Instagram"><Instagram size={24} /></a>
+              <a href="https://www.facebook.com/profile.php?id=61581173977939" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white" aria-label="Facebook"><Facebook size={24} /></a>
+              <a href="https://www.instagram.com/barrioestanciaportezuelo/" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white" aria-label="Instagram"><Instagram size={24} /></a>
             </div>
           </div>
         </div>
 
         <div className="border-t border-white/10 pt-8 text-center">
-          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-300">
             (c) {new Date().getFullYear()} Junta de Vecinos Estancia Liray Portezuelo | Comuna de Colina
           </p>
         </div>
